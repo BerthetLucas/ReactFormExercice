@@ -14,7 +14,7 @@ function App() {
     const methods = useChristmasInvitationFormSchema();
     const {handleSubmit, control} = methods;
 
-    const onSubmit: SubmitHandler<ChistmasInvitationFormSchema> = (data) => {
+    const onSubmit: SubmitHandler<ChistmasInvitationFormSchema | Partial<ChistmasInvitationFormSchema>> = (data) => {
         console.log(data);
     }
 
@@ -42,7 +42,7 @@ function App() {
                                 <div className="flex flex-col gap-2 items-center">
                                     <DatePicker
                                         label="de"
-                                        value={field.value}
+                                        value={field.value ?? ""}
                                         onChange={field.onChange}
                                     />
                                     {fieldState.error &&
@@ -57,7 +57,7 @@ function App() {
                                 <div className="flex flex-col gap-2 items-center">
                                     <DatePicker
                                         label="de"
-                                        value={field.value}
+                                        value={field.value ?? ""}
                                         onChange={field.onChange}
                                     />
                                     {fieldState.error &&

@@ -1,7 +1,7 @@
 interface ToggleProps {
     label: string,
     onChange: (e: boolean) => void,
-    checked?: boolean,
+    checked: boolean,
 }
 
 export const Toggle = ({label, onChange, checked = false}: ToggleProps) => {

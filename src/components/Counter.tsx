@@ -1,7 +1,7 @@
 import {Button} from "flowbite-react";
 
 interface CounterProps {
-    value: number;
+    value?: number;
     min?: number;
     max?: number;
     step?: number;

@@ -17,7 +17,7 @@ export const ChildrenToggle = () => {
             render={({field}) => (
                 <Toggle
                     label="J'ai des pitchounes"
-                    checked={field.value}
+                    checked={field.value ?? false}
                     onChange={field.onChange}
                 />
             )}
