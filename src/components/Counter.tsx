@@ -6,6 +6,7 @@ interface CounterProps {
     max?: number;
     step?: number;
     onChange: (value: number) => void;
+    label: string;
 }
 
 const Counter = ({
@@ -14,6 +15,7 @@ const Counter = ({
                      max = Number.MAX_SAFE_INTEGER,
                      step = 1,
                      onChange,
+                     label,
                  }: CounterProps) => {
 
     const handleChange = (newValue: number) => {
@@ -28,7 +30,7 @@ const Counter = ({
     return (
         <div
             className="flex items-center justify-between w-full max-w-sm p-4">
-            <p className="text-sm font-medium text-white">Nombre d'adultes</p>
+            <p className="text-sm font-medium text-white">{label}</p>
 
             <div className="flex items-center space-x-2">
                 <Button
