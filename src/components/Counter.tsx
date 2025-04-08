@@ -1,4 +1,6 @@
 import {Button} from "flowbite-react";
+import {useFormContext, useWatch} from "react-hook-form";
+import {ChristmasInvitationFormSchema} from "../schema/form-schema.ts";
 
 interface CounterProps {
     value?: number;
@@ -18,6 +20,9 @@ const Counter = ({
                      label,
                  }: CounterProps) => {
 
+    const {control} = useFormContext<ChristmasInvitationFormSchema>()
+    const isComingForChristmas = useWatch({control, name: 'isComingForChristmas'})
+
     const handleChange = (newValue: number) => {
         if (newValue >= min && newValue <= max) {
             onChange(newValue);
@@ -36,7 +41,7 @@ const Counter = ({
                 <Button
                     className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-white hover:bg-neutral-700 transition disabled:opacity-50"
                     onClick={decrement}
-                    disabled={value <= min}
+                    disabled={value <= min || !isComingForChristmas}
                 >
                     –
                 </Button>
@@ -48,7 +53,7 @@ const Counter = ({
                 <Button
                     className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-800 text-white hover:bg-neutral-700 transition disabled:opacity-50"
                     onClick={increment}
-                    disabled={value >= max}
+                    disabled={value >= max || !isComingForChristmas}
                 >
                     +
                 </Button>

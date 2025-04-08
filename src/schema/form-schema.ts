@@ -1,16 +1,27 @@
 import * as yup from 'yup';
 
-export const chistmasInvitationFormSchema = yup.object({
+export const christmasInvitationFormSchema = yup.object({
     isComingForChristmas: yup.boolean().default(false),
-    startDate: yup.string().optional()
+    startDate: yup.date().nullable()
         .when('isComingForChristmas', {
             is: true,
             then: schema => schema.required("Veuillez renseigner une date"),
         }),
-    endDate: yup.string().optional().when('isComingForChristmas', {
-        is: true,
-        then: schema => schema.required("Veuillez renseigner une date"),
-    }),
+    endDate: yup.date().nullable()
+        .when('isComingForChristmas', {
+            is: true,
+            then: schema => schema
+                .required("Veuillez renseigner une date")
+                .test(
+                    'endDate-after-startDate',
+                    "La date de fin doit être supérieure à celle de l'arrivée",
+                    function (endDate) {
+                        const {startDate} = this.parent;
+                        if (!startDate || !endDate) return true;
+                        return new Date(endDate) >= new Date(startDate);
+                    }
+                ),
+        }),
     adultsNumber: yup.number().optional(),
     adulteFirstName: yup.array().optional().when('adultsNumber', {
         is: (value: number) => value > 0,
@@ -29,5 +40,5 @@ export const chistmasInvitationFormSchema = yup.object({
     }),
 });
 
-export type ChistmasInvitationFormSchema = yup.InferType<typeof chistmasInvitationFormSchema>;
+export type ChristmasInvitationFormSchema = yup.InferType<typeof christmasInvitationFormSchema>;
 

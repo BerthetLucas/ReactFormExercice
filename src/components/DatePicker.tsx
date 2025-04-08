@@ -7,6 +7,8 @@ interface DatePickerProps {
 }
 
 export const DatePicker = ({label, value, onChange, name, placeholder = "Sélectionner une date",}: DatePickerProps) => {
+
+
     return (
         <div className="flex items-center gap-2 mb-4">
             {label && <label className="text-sm text-gray-700 dark:text-gray-300">{label}</label>}

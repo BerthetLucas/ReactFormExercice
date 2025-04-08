@@ -1,12 +1,13 @@
 import {Controller, useFormContext, useWatch} from "react-hook-form";
 import {Toggle} from "../Toggle.tsx";
-import {ChistmasInvitationFormSchema} from "../../schema/form-schema.ts";
+import {ChristmasInvitationFormSchema} from "../../schema/form-schema.ts";
 
 export const ChildrenToggle = () => {
-    const {control} = useFormContext<ChistmasInvitationFormSchema>()
+    const {control} = useFormContext<ChristmasInvitationFormSchema>()
     const adultFirstName = useWatch({control, name: 'adulteFirstName'})
+    const adultNumber = useWatch({control, name: "adultsNumber"})
 
-    if (!adultFirstName) {
+    if (!adultFirstName || adultNumber === 0) {
         return null;
     }
 
