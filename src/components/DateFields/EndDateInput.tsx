@@ -1,10 +1,11 @@
 import {DatePicker} from "../DatePicker.tsx";
-import {Controller, useFormContext} from "react-hook-form";
+import {Controller, useFormContext, useWatch} from "react-hook-form";
 import {ChristmasInvitationFormSchema} from "../../schema/form-schema.ts";
 
 export const EndDateInput = () => {
 
     const {control} = useFormContext<ChristmasInvitationFormSchema>()
+    const isComingForChristmas = useWatch({control, name: "isComingForChristmas"})
 
     return (
         <Controller
@@ -20,6 +21,7 @@ export const EndDateInput = () => {
                 return (
                     <div className="flex flex-col gap-2 items-center">
                         <DatePicker
+                            disabled={!isComingForChristmas}
                             label="a"
                             value={dateString}
                             onChange={(stringValue) => {

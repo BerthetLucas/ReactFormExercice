@@ -1,4 +1,3 @@
-import './App.css'
 import {Toggle} from "./components/Toggle.tsx";
 import Counter from "./components/Counter.tsx";
 import {Controller, FormProvider, SubmitHandler} from "react-hook-form";
@@ -33,7 +32,6 @@ function App() {
                                     checked={field.value}
                                     onChange={field.onChange}
                                 />
-
                             )}
                         />
                         <fieldset className="flex items-center gap-5">
