@@ -2,8 +2,8 @@ import {Link} from "react-router";
 
 export const Nav = () => {
     return (
-        <nav className="fixed top-0 w-full bg-gray-800 py-4">
-            <div className="container mx-auto">
+        <nav className="bg-gray-800 py-4 w-full">
+            <div>
                 <ul className="flex justify-center items-center gap-10">
                     <li>
                         <Link to="/" className="block py-2 px-4 rounded

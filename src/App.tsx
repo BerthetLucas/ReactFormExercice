@@ -1,12 +1,11 @@
 import {DotLottieReact} from '@lottiefiles/dotlottie-react';
-import {MainMotion} from "./components/MotionComponent/MainMotion.tsx";
 
 function App() {
 
     return (
-        <MainMotion className="text-white flex flex-col gap-10 items-center" delay={0.1}>
-            <h1 className="text-2xl font-bold">Bienvenue sur mon site d'invitation à la soirée de Noël !</h1>
-            <p>Parce que oui Noël ça se prépare en avance !</p>
+        <>
+            <h1 className="text-2xl font-bold text-white">Bienvenue sur mon site d'invitation à la soirée de Noël !</h1>
+            <p className="text-white">Parce que oui Noël ça se prépare en avance !</p>
 
             <div className="h-90">
                 <DotLottieReact
@@ -15,8 +14,8 @@ function App() {
                     autoplay
                 />
             </div>
-        </MainMotion>
+        </>
     )
 }
 
-export default App
+export default App;

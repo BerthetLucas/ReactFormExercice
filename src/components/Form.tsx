@@ -10,7 +10,6 @@ import {Alert, Button} from "flowbite-react";
 import {useChristmasInvitationFormSchema} from "../hooks/useFormSchema.ts";
 import {ChristmasInvitationFormSchema} from "../schema/form-schema.ts";
 import {useNavigate} from "react-router";
-import {MainMotion} from "./MotionComponent/MainMotion.tsx";
 
 export const Form = () => {
     const methods = useChristmasInvitationFormSchema();
@@ -25,7 +24,7 @@ export const Form = () => {
     };
 
     return (
-        <MainMotion className="flex flex-col gap-10" delay={0.1}>
+        <>
             <section>
                 <FormProvider {...methods}>
                     <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
@@ -66,6 +65,6 @@ export const Form = () => {
             <section className="flex items-center justify-center">
                 {isSubmitSuccessful && <Alert color="green" className="w-fit">Invitation envoyée !</Alert>}
             </section>
-        </MainMotion>
+        </>
     )
 }
